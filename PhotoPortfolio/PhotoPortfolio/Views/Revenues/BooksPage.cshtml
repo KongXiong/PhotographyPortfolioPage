@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "BooksPage";
+}
+<body>
+    <h2>BooksPage</h2>
+    <br />
+    <br />
+    <div class="container-fluid " style="background-color:Highlight">
+        <div class="container" style="color:red">
+            <div class="col-md-3" style="color:red; width:250px; height:200px; ">Revenues<canvas id="myChart" width="650" height="350"></canvas>
+</div>
+            <div class="col-md-3" style="color:red; width:250px; height:200px; ">Expenses</div>
+            <div class="col-md-3" style="color:red; width:250px; height:200px; ">Clients</div>
+            <div class="col-md-3" style="color:red; width:250px; height:200px; ">Reports</div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+
+                <h1> HI Everyone</h1>
+                <h2> HI Everyone</h2>
+
+            </div>
+            <div class="col-md-4">
+                <h1> HI Everyone</h1>
+                <h2> HI Everyone</h2>
+            </div>
+            <div class="col-md-4">
+                <h1> HI Everyone</h1>
+                <h2> HI Everyone</h2>
+            </div>
+        </div>
+    </div>
+
+    @{
+
+        double?[] result = ViewBag.totals;
+        string test = "";
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (i == 0)
+            {
+                test = test + result[i].ToString();
+            }
+            else
+            {
+                test = test + "," + result[i].ToString();
+            }
+        }
+
+
+        var Dates = ViewBag.dates;
+        string dateString = "";
+        foreach (var item in Dates)
+        {
+            if (dateString == "")
+            {
+                dateString = dateString + item.ToString("dd");
+            }
+            else
+            {
+                dateString = dateString + "," + item.ToString("dd");
+            }
+        }
+
+    }
+    <script>
+        var result = "@test";
+        var resultsArray = result.split(',');
+        var somthing = "@dateString";
+        var theThing = somthing.split(',');
+        var context = $("#myChart").get(0).getContext("2d");
+        var data = {
+            labels: theThing,
+
+            datasets: [{
+
+                label: "My First dataset",
+                fillColor: "rgba(39,242,242,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(255,0,39,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: resultsArray
+            }]
+        };
+
+        var options = {
+            //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+            scaleBeginAtZero: true,
+
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: false,
+
+            //String - Colour of the grid lines
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+
+            //Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+
+            //Boolean - If there is a stroke on each bar
+            barShowStroke: true,
+
+            //Number - Pixel width of the bar stroke
+            barStrokeWidth: 2,
+
+            //Number - Spacing between each of the X value sets
+            barValueSpacing: 5,
+
+            //Number - Spacing between data sets within X values
+            barDatasetSpacing: 1,
+
+            //String - A legend template
+            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+        }
+        var myBarChart = new Chart(context).Bar(data, options);
+    </script>
+</body>
