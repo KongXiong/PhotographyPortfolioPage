@@ -1286,7 +1286,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var width  = $tip[0].offsetWidth
     var height = $tip[0].offsetHeight
 
-    // manually read margins because getBoundingClientRect includes difference
+    // manually read margins because getBoundingRegisteredUserRect includes difference
     var marginTop = parseInt($tip.css('margin-top'), 10)
     var marginLeft = parseInt($tip.css('margin-left'), 10)
 
@@ -1382,7 +1382,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Tooltip.prototype.getPosition = function () {
     var el = this.$element[0]
-    return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : {
+    return $.extend({}, (typeof el.getBoundingRegisteredUserRect == 'function') ? el.getBoundingRegisteredUserRect() : {
       width: el.offsetWidth
     , height: el.offsetHeight
     }, this.$element.offset())

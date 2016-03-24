@@ -80,7 +80,15 @@ namespace PhotoPortfolio.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    if (User.Identity.AuthenticationType =="admin")
+                    {
+                        return RedirectToAction("Index", "Revenues");
+                    }
+                    else if (User.IsInRole("registered"))
+                    {
+                        return RedirectToAction("Landing", "RegisteredUsers");
+                    }
+                    return RedirectToAction("Index", "RegisteredUsers");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -171,7 +179,7 @@ namespace PhotoPortfolio.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Landing", "Clients");
+                    return RedirectToAction("Landing", "RegisteredUsers");
                 }
                 AddErrors(result);
             }

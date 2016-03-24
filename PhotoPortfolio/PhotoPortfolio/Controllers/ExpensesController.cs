@@ -16,6 +16,7 @@ namespace PhotoPortfolio.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Expenses
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             ViewBag.rows = db.Expenses.Select(x => x).OrderByDescending(y => y.Date).Take(5);
@@ -112,19 +113,19 @@ namespace PhotoPortfolio.Controllers
         public ActionResult CreatePartial()
         {
             ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name");
-            //if (ModelState.IsValid)
-            //{
-            //    Expense expense = new Expense();
-            //    expense.RegisteredUserID = User.Identity.GetUserId();
-            //    ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name", expense.ExpenseCategoryID);
-            //    db.Expenses.Add(expense);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //    //return View("Index");
-            //}
-            return PartialView("Create");
+            if (ModelState.IsValid)
+            {
+                Expense expense = new Expense();
+                expense.RegisteredUserID = User.Identity.GetUserId();
+                ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name", expense.ExpenseCategoryID);
+                db.Expenses.Add(expense);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+                //return View("Index");
+                }
+                return PartialView("Create");
         }
-
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name");
@@ -136,6 +137,7 @@ namespace PhotoPortfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Create([Bind(Include = "ID,Payee,Total,Date,ExpenseCategoryID")] Expense expense)
         {
             ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name", expense.ExpenseCategoryID);
@@ -186,6 +188,7 @@ namespace PhotoPortfolio.Controllers
         }
 
         // GET: Expenses/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

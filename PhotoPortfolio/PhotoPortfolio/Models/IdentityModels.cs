@@ -36,10 +36,10 @@ namespace PhotoPortfolio.Models
 
         public System.Data.Entity.DbSet<PhotoPortfolio.Models.Expense> Expenses { get; set; }
 
-        public System.Data.Entity.DbSet<PhotoPortfolio.Models.Client> Clients { get; set; }
+        public System.Data.Entity.DbSet<PhotoPortfolio.Models.RegisteredUser> RegisteredUsers { get; set; }
 
         public System.Data.Entity.DbSet<PhotoPortfolio.Models.Revenue> Revenues { get; set; }
 
-        public System.Data.Entity.DbSet<PhotoPortfolio.Models.RegisteredUser> RegisteredUsers { get; set; }
+        //public System.Data.Entity.DbSet<PhotoPortfolio.Models.RegisteredUser> RegisteredUsers { get; set; }
     }
 }

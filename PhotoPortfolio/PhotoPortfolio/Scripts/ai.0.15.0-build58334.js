@@ -93,7 +93,7 @@ var Microsoft;
                     }
                 }
                 catch (e) {
-                    ApplicationInsights._InternalLogging.warnToConsole('Failed to get client localStorage: ' + e.message);
+                    ApplicationInsights._InternalLogging.warnToConsole('Failed to get Client localStorage: ' + e.message);
                     return null;
                 }
             };
@@ -148,7 +148,7 @@ var Microsoft;
                     }
                 }
                 catch (e) {
-                    ApplicationInsights._InternalLogging.warnToConsole('Failed to get client session storage: ' + e.message);
+                    ApplicationInsights._InternalLogging.warnToConsole('Failed to get Client session storage: ' + e.message);
                     return null;
                 }
             };
@@ -1710,7 +1710,7 @@ var Microsoft;
                             ApplicationInsights._InternalLogging.throwInternalNonUserActionable(1 /* WARNING */, "error calculating page view performance: total='" + total + "', network='" + network + "', request='" + request + "', response='" + response + "', dom='" + dom + "'");
                         }
                         else if (total < Math.floor(network) + Math.floor(request) + Math.floor(response) + Math.floor(dom)) {
-                            ApplicationInsights._InternalLogging.throwInternalNonUserActionable(1 /* WARNING */, "client performance math error:" + total + " < " + network + " + " + request + " + " + response + " + " + dom);
+                            ApplicationInsights._InternalLogging.throwInternalNonUserActionable(1 /* WARNING */, "Client performance math error:" + total + " < " + network + " + " + request + " + " + response + " + " + dom);
                         }
                         else {
                             durationMs = total;

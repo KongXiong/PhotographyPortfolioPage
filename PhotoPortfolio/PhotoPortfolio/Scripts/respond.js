@@ -218,7 +218,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 		
 		//enable/disable styles
 		applyMedia			= function( fromResize ){
-			var name		= "clientWidth",
+			var name		= "RegisteredUserWidth",
 				docElemProp	= docElem[ name ],
 				currWidth 	= doc.compatMode === "CSS1Compat" && docElemProp || doc.body[ name ] || docElemProp,
 				styleBlocks	= {},

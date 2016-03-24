@@ -16,14 +16,15 @@ namespace PhotoPortfolio.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Revenues
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            var RevenueViewModelList = db.Clients
+            var RevenueViewModelList = db.RegisteredUsers
                            .Join(db.Revenues,
-                           c => c.ID, r => r.ClientID,
+                           c => c.UserID, r => r.RegisteredUserID,
                            (c, r) => new RevenueViewModel
                            {
-                               Client = c,
+                               RegisteredUser = c,
                                Total = r.Total,
                                Date = r.Date,
                                RevenueCategory = r.RevenueCategory
@@ -63,14 +64,15 @@ namespace PhotoPortfolio.Controllers
 
             return View();
         }
+        [Authorize(Roles ="admin")]
         public ActionResult BooksPage()
         {
-            var RevenueViewModelList = db.Clients
+            var RevenueViewModelList = db.RegisteredUsers
                            .Join(db.Revenues,
-                           c => c.ID, r => r.ClientID,
+                           c => c.UserID, r => r.RegisteredUserID,
                            (c, r) => new RevenueViewModel
                            {
-                               Client = c,
+                               RegisteredUser = c,
                                Total = r.Total,
                                Date = r.Date,
                                RevenueCategory = r.RevenueCategory
@@ -85,6 +87,7 @@ namespace PhotoPortfolio.Controllers
         }
 
         // GET: Revenues/Details/5
+        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -98,18 +101,19 @@ namespace PhotoPortfolio.Controllers
             }
             return View(revenue);
         }
-
+        [Authorize(Roles = "admin")]
         public ActionResult CreatePartial()
         {
-            ViewBag.ClientID = new SelectList(db.Clients, "ID", "Firstname");
+            ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname");
             ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name");
             return PartialView("Create");
         }
 
         // GET: Revenues/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
-            ViewBag.ClientID = new SelectList(db.Clients, "ID", "Firstname");
+            ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname");
             ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name");
             return View();
         }
@@ -119,7 +123,8 @@ namespace PhotoPortfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID, Total, Date, RegisteredUserID, ClientID, RevenueCategoryID")] Revenue revenue)
+        [Authorize(Roles = "admin")]
+        public ActionResult Create([Bind(Include = "ID, Total, Date, RegisteredUserID, RevenueCategoryID")] Revenue revenue)
         {
             if (ModelState.IsValid)
             {
@@ -130,11 +135,12 @@ namespace PhotoPortfolio.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name", revenue.RevenueCategoryID);
-            ViewBag.ClientID = new SelectList(db.Clients, "ID", "Firstname", revenue.ClientID);
+            ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname", revenue.RegisteredUserID);
             return View(revenue);
         }
 
         // GET: Revenues/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -146,7 +152,7 @@ namespace PhotoPortfolio.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ClientID = new SelectList(db.Clients, "ID", "Firstname", revenue.ClientID);
+            ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname", revenue.RegisteredUserID);
             ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name", revenue.RevenueCategoryID);
             return View(revenue);
         }
@@ -156,7 +162,8 @@ namespace PhotoPortfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Total,Date,ClientID,RevenueCategoryID")] Revenue revenue)
+        [Authorize(Roles = "admin")]
+        public ActionResult Edit([Bind(Include = "ID,Total,Date,RegisteredUserID,RevenueCategoryID")] Revenue revenue)
         {
             if (ModelState.IsValid)
             {
@@ -164,12 +171,13 @@ namespace PhotoPortfolio.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClientID = new SelectList(db.Clients, "ID", "Firstname", revenue.ClientID);
+            ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname", revenue.RegisteredUserID);
             ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name", revenue.RevenueCategoryID);
             return View(revenue);
         }
 
         // GET: Revenues/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -10,15 +10,18 @@ using PhotoPortfolio.Models;
 
 namespace PhotoPortfolio.Controllers
 {
-    public class RegisteredUsersController : Controller
+    public class ClientsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: RegisteredUsers
         public ActionResult Index()
         {
-            var registeredUsers = db.RegisteredUsers.Include(r => r.User);
-            return View(registeredUsers.ToList());
+            return View(db.RegisteredUsers.ToList());
+        }
+        public ActionResult Landing()
+        {
+            return View();
         }
 
         // GET: RegisteredUsers/Details/5
@@ -36,17 +39,9 @@ namespace PhotoPortfolio.Controllers
             return View(registeredUser);
         }
 
-
-        public ActionResult Landing()
-        {
-            return View();
-        }
-
         // GET: RegisteredUsers/Create
-        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
-            //ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email");
             return View();
         }
 
@@ -55,8 +50,7 @@ namespace PhotoPortfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
-        public ActionResult Create([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode,UserID")] RegisteredUser registeredUser)
+        public ActionResult Create([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode")] RegisteredUser registeredUser)
         {
             if (ModelState.IsValid)
             {
@@ -65,12 +59,10 @@ namespace PhotoPortfolio.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email", registeredUser.UserID);
             return View(registeredUser);
         }
 
         // GET: RegisteredUsers/Edit/5
-        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,7 +74,6 @@ namespace PhotoPortfolio.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email", registeredUser.UserID);
             return View(registeredUser);
         }
 
@@ -91,8 +82,7 @@ namespace PhotoPortfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
-        public ActionResult Edit([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode,UserID")] RegisteredUser registeredUser)
+        public ActionResult Edit([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode")] RegisteredUser registeredUser)
         {
             if (ModelState.IsValid)
             {
@@ -100,12 +90,10 @@ namespace PhotoPortfolio.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email", registeredUser.UserID);
             return View(registeredUser);
         }
 
         // GET: RegisteredUsers/Delete/5
-        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

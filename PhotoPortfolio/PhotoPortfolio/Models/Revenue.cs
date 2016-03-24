@@ -12,12 +12,10 @@ namespace PhotoPortfolio.Models
         public double? Total { get; set; }
         public DateTime Date { get; set; }
 
-
         public string RegisteredUserID { get; set; }
         public virtual RegisteredUser RegisteredUser { get; set; }
-        public int? ClientID { get; set; }
-        public virtual Client Client { get; set; }
         public int RevenueCategoryID { get; set; }
         public virtual RevenueCategory RevenueCategory { get; set; }
+
     }
 }

@@ -11,14 +11,14 @@ using Microsoft.AspNet.Identity;
 
 namespace PhotoPortfolio.Controllers
 {
-    public class ClientsController : Controller
+    public class RegisteredUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Clients
+        // GET: RegisteredUsers
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            return View(db.RegisteredUsers.ToList());
         }
 
         public ActionResult Landing()
@@ -26,22 +26,22 @@ namespace PhotoPortfolio.Controllers
             return View();
         }
 
-        // GET: Clients/Details/5
+        // GET: RegisteredUsers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            RegisteredUser RegisteredUser = db.RegisteredUsers.Find(id);
+            if (RegisteredUser == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(RegisteredUser);
         }
 
-        // GET: Clients/Create
+        // GET: RegisteredUsers/Create
         public ActionResult CreatePartial()
         {
             return PartialView("Create");
@@ -52,78 +52,78 @@ namespace PhotoPortfolio.Controllers
             return View();
         }
 
-        // POST: Clients/Create
+        // POST: RegisteredUsers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode,Email,RegisteredUserID")] Client client)
+        public ActionResult Create([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode,Email,RegisteredUserID")] RegisteredUser RegisteredUser)
         {
             if (ModelState.IsValid)
             {
-                client.RegisteredUserID = User.Identity.GetUserId();
+                RegisteredUser.RegisteredUserID = User.Identity.GetUserId();
                 //ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name", expense.ExpenseCategoryID);
-                db.Clients.Add(client);
+                db.RegisteredUsers.Add(RegisteredUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(client);
+            return View(RegisteredUser);
         }
 
-        // GET: Clients/Edit/5
+        // GET: RegisteredUsers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            RegisteredUser RegisteredUser = db.RegisteredUsers.Find(id);
+            if (RegisteredUser == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(RegisteredUser);
         }
 
-        // POST: Clients/Edit/5
+        // POST: RegisteredUsers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode,Email,RegisteredUserID")] Client client)
+        public ActionResult Edit([Bind(Include = "ID,Firstname,Lastname,Address,City,State,ZipCode,Email,RegisteredUserID")] RegisteredUser RegisteredUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(RegisteredUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(client);
+            return View(RegisteredUser);
         }
 
-        // GET: Clients/Delete/5
+        // GET: RegisteredUsers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            RegisteredUser RegisteredUser = db.RegisteredUsers.Find(id);
+            if (RegisteredUser == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(RegisteredUser);
         }
 
-        // POST: Clients/Delete/5
+        // POST: RegisteredUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            RegisteredUser RegisteredUser = db.RegisteredUsers.Find(id);
+            db.RegisteredUsers.Remove(RegisteredUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

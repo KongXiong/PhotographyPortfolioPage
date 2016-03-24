@@ -707,16 +707,16 @@
 			var mouseX, mouseY;
 			var e = evt.originalEvent || evt,
 				canvas = evt.currentTarget || evt.srcElement,
-				boundingRect = canvas.getBoundingClientRect();
+				boundingRect = canvas.getBoundingRegisteredUserRect();
 
 			if (e.touches){
-				mouseX = e.touches[0].clientX - boundingRect.left;
-				mouseY = e.touches[0].clientY - boundingRect.top;
+				mouseX = e.touches[0].RegisteredUserX - boundingRect.left;
+				mouseY = e.touches[0].RegisteredUserY - boundingRect.top;
 
 			}
 			else{
-				mouseX = e.clientX - boundingRect.left;
-				mouseY = e.clientY - boundingRect.top;
+				mouseX = e.RegisteredUserX - boundingRect.left;
+				mouseY = e.RegisteredUserY - boundingRect.top;
 			}
 
 			return {
@@ -762,12 +762,12 @@
 		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
 			var container = domNode.parentNode;
 			// TODO = check cross browser stuff with this.
-			return container.clientWidth;
+			return container.RegisteredUserWidth;
 		},
 		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
 			var container = domNode.parentNode;
 			// TODO = check cross browser stuff with this.
-			return container.clientHeight;
+			return container.RegisteredUserHeight;
 		},
 		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
 		retinaScale = helpers.retinaScale = function(chart){

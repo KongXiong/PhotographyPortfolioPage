@@ -18,7 +18,6 @@ namespace PhotoPortfolio.Migrations
 
         protected override void Seed(PhotoPortfolio.Models.ApplicationDbContext context)
         {
-            if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
             {
                 RoleStore<IdentityRole> roleStore = new RoleStore<IdentityRole>(context);
                 RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(roleStore);

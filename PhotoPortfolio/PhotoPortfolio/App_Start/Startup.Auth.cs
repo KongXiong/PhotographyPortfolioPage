@@ -47,8 +47,8 @@ namespace PhotoPortfolio
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //    RegisteredUserId: "",
+            //    RegisteredUserSecret: "");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
@@ -60,8 +60,8 @@ namespace PhotoPortfolio
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+            //    RegisteredUserId = "",
+            //    RegisteredUserSecret = ""
             //});
         }
     }
