@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace PhotoPortfolio.Models
 {
+
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

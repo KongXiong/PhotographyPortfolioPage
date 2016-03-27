@@ -21,7 +21,7 @@ namespace PhotoPortfolio.Controllers
         {
             var RevenueViewModelList = db.RegisteredUsers
                            .Join(db.Revenues,
-                           c => c.UserID, r => r.RegisteredUserID,
+                           c => c.ID, r => r.RegisteredUserID,
                            (c, r) => new RevenueViewModel
                            {
                                RegisteredUser = c,
@@ -32,9 +32,11 @@ namespace PhotoPortfolio.Controllers
                            .OrderByDescending(x => x.Date)
                            .Take(5).ToList();
 
+           
+
             ViewBag.rows = db.Revenues.Select(x => x).OrderByDescending(y => y.Date).Take(5);
-            ViewBag.dates = db.Revenues.Select(x => x.Date).ToList();
-            ViewBag.totals = db.Revenues.Select(x => x.Total).ToArray();
+            ViewBag.dates = db.Revenues.Select(x => x.Date).Distinct().ToList();
+            ViewBag.totals = db.Revenues.GroupBy(y => y.Date).Select(x => x.Sum(y => y.Total)).ToArray();
             return View(RevenueViewModelList);
         }
 
@@ -56,12 +58,11 @@ namespace PhotoPortfolio.Controllers
                     .Where(x => x.Date.Month <= 12 && x.Date.Month >= 10)
                     .Select(x => x.Total)
                     .Sum(x => x);
-            return PartialView("Quarterly");
+            return PartialView("QuarterlyRevenues");
         }
 
         public ActionResult Quarterly()
         {
-
             return View();
         }
         [Authorize(Roles ="admin")]
@@ -69,7 +70,7 @@ namespace PhotoPortfolio.Controllers
         {
             var RevenueViewModelList = db.RegisteredUsers
                            .Join(db.Revenues,
-                           c => c.UserID, r => r.RegisteredUserID,
+                           c => c.ID, r => r.RegisteredUserID,
                            (c, r) => new RevenueViewModel
                            {
                                RegisteredUser = c,
@@ -80,9 +81,13 @@ namespace PhotoPortfolio.Controllers
                            .OrderByDescending(x => x.Date)
                            .Take(5).ToList();
 
+            ViewBag.xrows = db.Expenses.Select(x => x).OrderByDescending(y => y.Date).Take(5);
+            ViewBag.xdates = db.Expenses.Select(x => x.Date).Distinct().ToList();
+            ViewBag.xtotals = db.Expenses.GroupBy(y => y.Date).Select(x => x.Sum(y => y.Total)).ToArray();
+
             ViewBag.rows = db.Revenues.Select(x => x).OrderByDescending(y => y.Date).Take(5);
-            ViewBag.dates = db.Revenues.Select(x => x.Date).ToList();
-            ViewBag.totals = db.Revenues.Select(x => x.Total).ToArray();
+            ViewBag.dates = db.Revenues.Select(x => x.Date.Month).Distinct().ToList();
+            ViewBag.totals = db.Revenues.GroupBy(y => y.Date.Month).Select(x => x.Sum(y => y.Total)).ToArray();
             return View("BooksPage");
         }
 
@@ -112,7 +117,7 @@ namespace PhotoPortfolio.Controllers
         // GET: Revenues/Create
         [Authorize(Roles = "admin")]
         public ActionResult Create()
-        {
+        { 
             ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname");
             ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name");
             return View();
@@ -128,7 +133,7 @@ namespace PhotoPortfolio.Controllers
         {
             if (ModelState.IsValid)
             {
-                revenue.RegisteredUserID = User.Identity.GetUserId();
+                //revenue.RegisteredUserID = User.Identity.GetUserId();
                 //ViewBag.RevenueCategoryID = new SelectList(db.RevenueCategories, "ID", "Name", revenue.RevenueCategoryID);
                 db.Revenues.Add(revenue);
                 db.SaveChanges();

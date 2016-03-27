@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhotoPortfolio.Models;
+using Microsoft.AspNet.Identity;
 
 namespace PhotoPortfolio.Controllers
 {
@@ -60,6 +61,7 @@ namespace PhotoPortfolio.Controllers
         {
             if (ModelState.IsValid)
             {
+                //registeredUser.UserID = User.Identity.GetUserId();
                 db.RegisteredUsers.Add(registeredUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");

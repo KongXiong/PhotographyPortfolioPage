@@ -8,8 +8,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/jquery.ui.base.css" rel="stylesheet" />
+    <link href="~/Content/jquery.ui.core.css" rel="stylesheet" />
+    <link href="~/Content/jquery.ui.theme.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Chart")
+    @Scripts.Render("~/bundles/core")
+    @Scripts.Render("~/bundles/widget")
+    @Scripts.Render("~/bundles/datepicker")
     <link href="~/Content/stylesheet.css" rel="stylesheet" />
     <style type="text/css">
         * {
@@ -41,13 +50,16 @@
                 /*font-family: Arial;*/
             }
     </style>
-    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.stellar.js"></script>
+    <script src="~/Scripts/jquery.ui.core.js"></script>
+    <script src="~/Scripts/jquery.ui.widget.js"></script>
+    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
     <script type="text/javascript">
         $.stellar();
-
-    </script>
+    </script>*@
+   
 </head>
 <body>
         <div class="navbar navbar-inverse navbar-fixed-top ">
@@ -118,9 +130,17 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    <script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({
+            showWeek: true,
+            firstDay: 1
+        });
+    });
 
-    @Scripts.Render("~/bundles/jquery")
+    </script>
+    @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)*@
 </body>
 </html>

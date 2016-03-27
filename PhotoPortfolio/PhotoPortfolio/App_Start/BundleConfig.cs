@@ -30,6 +30,9 @@ namespace PhotoPortfolio
             bundles.Add(new ScriptBundle("~/bundles/Chart").Include("~/Scripts/Chart.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Stellar").Include("~/Scripts/jquery.stellar.js"));
+            bundles.Add(new ScriptBundle("~/bundles/core").Include("~/Scripts/jquery.ui.core.js"));
+            bundles.Add(new ScriptBundle("~/bundles/widget").Include("~/Scripts/jquery.ui.widget.js"));
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include("~/Scripts/jquery.ui.datepicker.js"));
 
         }
     }

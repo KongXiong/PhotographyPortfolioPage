@@ -20,9 +20,8 @@ namespace PhotoPortfolio.Controllers
         public ActionResult Index()
         {
             ViewBag.rows = db.Expenses.Select(x => x).OrderByDescending(y => y.Date).Take(5);
-            ViewBag.dates = db.Expenses.OrderBy(x => x.Date).Select(y => y.Date).Take(30);
-            ViewBag.intArray = db.Expenses.OrderBy(y => y.Date).Select(a => a.Total).ToArray();
-            ViewBag.totals = db.Expenses.Select(x => x).OrderByDescending(y => y.Date).Take(30);
+            ViewBag.dates = db.Expenses.Select(x => x.Date).Distinct().ToList();
+            ViewBag.totals = db.Expenses.GroupBy(y => y.Date).Select(x => x.Sum(y => y.Total)).ToArray();
             var expenses = db.Expenses.Include(e => e.ExpenseCategory);
             return View(expenses.ToList());
         }
@@ -90,7 +89,7 @@ namespace PhotoPortfolio.Controllers
             .Sum(x => x);
 
 
-            return PartialView("Quarterly");
+            return PartialView("QuarterlyExpenses");
         }
 
         // GET: Expenses/Details/5
@@ -113,16 +112,16 @@ namespace PhotoPortfolio.Controllers
         public ActionResult CreatePartial()
         {
             ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name");
-            if (ModelState.IsValid)
-            {
-                Expense expense = new Expense();
-                expense.RegisteredUserID = User.Identity.GetUserId();
-                ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name", expense.ExpenseCategoryID);
-                db.Expenses.Add(expense);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            //if (ModelState.IsValid)
+            //{
+                //Expense expense = new Expense();
+                ////expense.RegisteredUserID = User.Identity.GetUserId();
+                //ViewBag.ExpenseCategoryID = new SelectList(db.ExpenseCategories, "ID", "Name", expense.ExpenseCategoryID);
+                //db.Expenses.Add(expense);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
                 //return View("Index");
-                }
+                //}
                 return PartialView("Create");
         }
         [Authorize(Roles = "admin")]

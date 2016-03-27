@@ -211,9 +211,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603242152576_init.cs" />
-    <Compile Include="Migrations\201603242152576_init.Designer.cs">
-      <DependentUpon>201603242152576_init.cs</DependentUpon>
+    <Compile Include="Migrations\201603250224424_init.cs" />
+    <Compile Include="Migrations\201603250224424_init.Designer.cs">
+      <DependentUpon>201603250224424_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -231,6 +231,38 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\animated-overlay.gif" />
+    <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.ui.accordion.css" />
+    <Content Include="Content\jquery.ui.all.css" />
+    <Content Include="Content\jquery.ui.autocomplete.css" />
+    <Content Include="Content\jquery.ui.base.css" />
+    <Content Include="Content\jquery.ui.button.css" />
+    <Content Include="Content\jquery.ui.core.css" />
+    <Content Include="Content\jquery.ui.datepicker.css" />
+    <Content Include="Content\jquery.ui.dialog.css" />
+    <Content Include="Content\jquery.ui.menu.css" />
+    <Content Include="Content\jquery.ui.progressbar.css" />
+    <Content Include="Content\jquery.ui.resizable.css" />
+    <Content Include="Content\jquery.ui.selectable.css" />
+    <Content Include="Content\jquery.ui.slider.css" />
+    <Content Include="Content\jquery.ui.spinner.css" />
+    <Content Include="Content\jquery.ui.tabs.css" />
+    <Content Include="Content\jquery.ui.theme.css" />
+    <Content Include="Content\jquery.ui.tooltip.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="favicon.ico" />
@@ -269,6 +301,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.stellar.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -343,6 +378,8 @@
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\RegisteredUsers\Landing.cshtml" />
     <Content Include="Views\Revenues\BooksPage.cshtml" />
+    <Content Include="Views\Expenses\QuarterlyExpenses.cshtml" />
+    <Content Include="Views\Revenues\QuarterlyRevenues.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,8 +393,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603242152576_init.resx">
-      <DependentUpon>201603242152576_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603250224424_init.resx">
+      <DependentUpon>201603250224424_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
