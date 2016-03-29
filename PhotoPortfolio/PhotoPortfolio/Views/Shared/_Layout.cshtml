@@ -7,58 +7,32 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/jquery.ui.base.css" rel="stylesheet" />
+    <title>@ViewBag.Title </title>
+    @*<link href="~/Content/jquery.ui.base.css" rel="stylesheet" />
     <link href="~/Content/jquery.ui.core.css" rel="stylesheet" />
-    <link href="~/Content/jquery.ui.theme.css" rel="stylesheet" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/Chart")
-    @Scripts.Render("~/bundles/core")
-    @Scripts.Render("~/bundles/widget")
-    @Scripts.Render("~/bundles/datepicker")
+    <link href="~/Content/jquery.ui.theme.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
     <link href="~/Content/stylesheet.css" rel="stylesheet" />
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/dropzonecss")
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-responsive.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-        .content {
-            height: 1500px;
-            background-color: #333;
-        }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    @Scripts.Render("~/bundles/Chart")
+    @*@Scripts.Render("~/bundles/core")
+    @Scripts.Render("~/bundles/widget")
+    @Scripts.Render("~/bundles/datepicker")*@
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/Stellar")
 
-        .parallax-bg {
-            padding: 300px 0;
-            background-image: url(http://www.lovekcphoto.com/wp-content/uploads/2015/07/2015-07-29_0001.jpg);
-            background-size: cover;
-            /*background-repeat:no-repeat;*/
-            background-attachment: fixed;
-            /*webkit-transition: all 0.2s ease;*/
-            -moz-transition: all 0.2s ease;
-            transition: all 0.2s ease;
-        }
 
-            .parallax-bg h1 {
-                text-align: center;
-                text-transform: uppercase;
-                color: #fff;
-                font-size: 70px;
-                /*font-family: Arial;*/
-            }
-    </style>
-    @*<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.stellar.js"></script>
-    <script src="~/Scripts/jquery.ui.core.js"></script>
-    <script src="~/Scripts/jquery.ui.widget.js"></script>
-    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
-    <script type="text/javascript">
-        $.stellar();
-    </script>*@
+  
    
 </head>
 <body>
@@ -97,14 +71,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @*<a class="navbar-brand" href="#">Menu</a>*@
                 </div>
                 <div id="navbar-collapse" style="text-align:center">
                     <ul >
                         <li class="btn btn-secondary">@Html.ActionLink("Revenue", "Index", "Revenues")</li>
                         <li class="btn btn-secondary">@Html.ActionLink("Expense", "Index", "Expenses")</li>
                         <li class="btn btn-secondary">@Html.ActionLink("RegisteredUsers", "Index", "RegisteredUsers")</li>
-                        <li class="dropdown">
+                        <li class="btn dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Manage Packages <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu" >
                                 <li class="dropdown-header">Create Categories</li>
@@ -122,25 +95,51 @@
             </div>
         </div>
     }
+    <div class="row col-md-offset-1">
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+            @RenderBody()
+        <div class="col-sm-10 col-sm-offset-1">
+            <section class="row callToActionSection" id="callOutOne">
+                <div class="col-sm-6">
+                    <h1>Sed vel lectus eu nulla porttitor consequat a ac ligula</h1>
+                    <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+                    <button class="btn btn-primary btn-lg">Buy Now</button>
+                </div>
+            </section>
+            
+            <section class="row callToActionSection" id="callOutTwo">
+                <div class="col-sm-6 col-sm-offset-6">
+                    <h1>Sed vel lectus eu nulla porttitor consequat a ac ligula</h1>
+                    <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+                    <button class="btn btn-primary btn-lg">Buy Now</button>
+                </div>
+            </section>
+
+            <section class="row callToActionSection" id="callOutThree">
+                <div class="col-sm-6" >
+                    <h1>Sed vel lectus eu nulla porttitor consequat a ac ligula</h1>
+                    <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+                    <button class="btn btn-primary btn-lg">Buy Now</button>
+                </div>
+            </section>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year </p>
+                <div class="social-footer">
+                    <a href="https://www.facebook.com/LoveKCPhotography"><i class="fa fa-facebook"></i></a>
+
+                </div>
+            </footer>
+        </div>
     </div>
-    <script type="text/javascript">
-    $(function () {
-        $("#datepicker").datepicker({
-            showWeek: true,
-            firstDay: 1
-        });
-    });
 
+    <script>
+        $(document).ready(function () {
+            $.stellar();
+        });
     </script>
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)*@
+
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

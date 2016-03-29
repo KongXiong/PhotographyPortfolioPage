@@ -3,32 +3,20 @@
     ViewBag.Title = "Landing";
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-
-<body>
-
-    <div class="content">
-        <div class="parallax-bg">
-            <h1 style="font-family:'madina_script-webfont'; color:black" data-stellar-background-ratio=".5">Love KC Photography</h1>
-        </div>
+    <div class="section">
+        <section>
+            <div class="parallax-bg" data-stellar-background-ratio=".5"></div>
+        </section>
+        <section style="height:400px;">
+           
+                <h1 style="font-family:'madina_script-webfont'; color:black; text-align:center; position:relative">Love KC Photography</h1>
+          
+        </section>
+        <section data-stellar-background-ratio="6">
+            <div class="parallax-bg" data-stellar-background-ratio=".5"></div>
+        </section>
         <div data-stellar-background-ratio=".5" style="font-family:'madina_script-webfont'; color:white">Hi Everyone</div>
     </div>
-    <script type="text/javascript">
-        (function () {
-            var documentE1 = $(document),
-                parallaxBg = $('div.parallax-bg');
-
-            documentE1.on('scroll', function () {
-                var currScrollPos = documentE1.scrollTop();
-                parallaxBg.css('background-position', '0' + -currScrollPos / 4 + 'px');
-            });
-        })();
-
-        $(document).ready(function () {
-            $(window).stellar();
-        });
+   
 
 
-    </script>
-</body>
-</html>

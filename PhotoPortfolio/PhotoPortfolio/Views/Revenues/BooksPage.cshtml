@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "BooksPage";
 }
+
 <body>
     <h2 style="font-family:'madina_script-webfont'; text-align: center;" >BooksPage</h2>
     <br />
@@ -15,7 +16,8 @@
                 <button class="btn">Expenses</button>                           
             </div>                                                              
             <div class="col-md-3" style="color:red; width:250px; height:200px; "align="center">
-                <button class="btn">Clients</button>                            
+                <input type="button" class="btn" value="Clients" onclick="location.href='@Url.Action("AdminClientControls", "RegisteredUsers")'" />
+                @*<button class="btn">Clients</button>*@                            
             </div>                                                              
             <div class="col-md-3" style="color:red; width:250px; height:200px; "align="center">
                 <button class="btn bt">Reports</button>
@@ -23,25 +25,16 @@
         </div>
         <br />
         <br />
-        <div class="row">
+        <div class="row" style="text-align:center;">
             <div class="col-md-4">
-
                 <h1> HI Everyone</h1>
-                <h2> HI Everyone</h2>
                 <canvas id="myBarChart"></canvas>
             </div>
             <div class="col-md-4">
                 <h1> HI Everyone</h1>
-                <h2> HI Everyone</h2>
                 <canvas id="myLineChart"></canvas>
-
             </div>
-            <div class="col-md-4">
-                <h1> HI Everyone</h1>
-                <h2> HI Everyone</h2>
-                <canvas id="myDoughnutChart"></canvas>
-
-            </div>
+            
         </div>
     </div>
 
@@ -122,7 +115,6 @@
     </script>
 
     @{
-
         double?[] xresult = ViewBag.xtotals;
         string xtest = "";
 
@@ -197,6 +189,10 @@
             //Boolean - Whether to fill the dataset with a colour
             datasetFill: true,
         }
-        var myLineChart = new Chart(xcontext).Line(linedata, lineoptions)
+        var myLineChart = new Chart(xcontext).Line(linedata, lineoptions);
+
+        //File Upload response from the server
+ 
     </script>
+  
 </body>

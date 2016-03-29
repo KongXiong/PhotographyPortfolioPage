@@ -43,6 +43,20 @@ namespace PhotoPortfolio.Controllers
             return View();
         }
 
+        public ActionResult ClientName(int ID)
+        {
+
+            return View();
+        }
+
+        public ActionResult AdminClientControls()
+        {
+
+            ViewBag.RegisteredUserID = new SelectList(db.RegisteredUsers, "ID", "Firstname");
+
+            return View();
+        }
+
         // GET: RegisteredUsers/Create
         [Authorize(Roles = "admin")]
         public ActionResult Create()

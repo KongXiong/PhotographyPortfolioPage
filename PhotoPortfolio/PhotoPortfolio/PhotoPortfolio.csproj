@@ -229,6 +229,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\animated-overlay.gif" />
@@ -263,7 +264,6 @@
     <Content Include="Content\jquery.ui.tabs.css" />
     <Content Include="Content\jquery.ui.theme.css" />
     <Content Include="Content\jquery.ui.tooltip.css" />
-    <Content Include="Content\style.css" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\generator_config.txt" />
@@ -282,6 +282,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -297,6 +298,14 @@
     <Content Include="fonts\madina_script-webfont.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Content\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -380,6 +389,10 @@
     <Content Include="Views\Revenues\BooksPage.cshtml" />
     <Content Include="Views\Expenses\QuarterlyExpenses.cshtml" />
     <Content Include="Views\Revenues\QuarterlyRevenues.cshtml" />
+    <Content Include="Views\Home\TestView.cshtml" />
+    <Content Include="Views\Shared\_ClientName.cshtml" />
+    <Content Include="Views\RegisteredUsers\ClientName.cshtml" />
+    <Content Include="Views\RegisteredUsers\AdminClientControls.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

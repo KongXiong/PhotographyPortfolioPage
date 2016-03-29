@@ -12,6 +12,10 @@ namespace PhotoPortfolio.Controllers
         {
             return View();
         }
+        public ActionResult TestView()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {

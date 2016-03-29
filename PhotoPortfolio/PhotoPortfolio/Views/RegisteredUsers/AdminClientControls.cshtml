@@ -1,0 +1,39 @@
+﻿@model PhotoPortfolio.Models.RegisteredUser
+
+@{
+    ViewBag.Title = "AdminClientControls";
+}
+
+<h1 style="font-family:'madina_script-webfont'; text-align: center">Client  Controls</h1>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Firstname, "Client", htmlAttributes: new { @class = "control-label col-md-2", style= "font-family:'madina_script-webfont'; font-size:large;" })
+    <div class="col-md-10">
+        @Html.DropDownList("RegisteredUserID", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+    </div>
+
+    <div style="font-family:'madina_script-webfont'; font-size:large;"> Upload Photos</div>
+    @*<canvas id="myDoughnutChart"></canvas>*@
+    <div class="dropZone" style="margin:0 auto">
+        <form action="~/Revenues/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzone" style="width: 250px; background-color: whitesmoke ; border: thin dotted;">
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+                <input type="submit" value="Upload" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    Dropzone.options.dropzoneForm = {
+        init: function () {
+            this.on("complete", function (data) {
+                //var res = eval('(' + data.xhr.responseText + ')');
+                var res = JSON.parse(data.xhr.responseText);
+            });
+        }
+    };
+
+</script>
