@@ -1,22 +1,150 @@
 ﻿
 @{
-    ViewBag.Title = "Landing";
-}
+    Layout = null;
+ }
 
-    <div class="section">
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description">
+    <meta name="keywords" content="simplicity, theme, html5, download">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author">
+    <link rel="icon" type="image/png" href="~/Images/img/icon.png" />
+
+    <!--Style-->
+    @*<link rel="stylesheet" href="~/Content/reset.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/style-responsive.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">*@
+    <link href="~/Content/stylesheet.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Stellar")
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+    <!--Preloader-->
+
+    @*<div class="preloader" id="preloader">
+        <div class="item">
+            <div class="spinner">
+            </div>
+        </div>
+    </div>
+
+    <div class="opacity-nav">
+
+        <div class="menu-index" id="buttons" style="z-index:999999">
+            <i class="fa  fa-close"></i>
+        </div>
+
+        <ul class="menu-fullscreen">*@
+            @*<li>@Html.ActionLink("Home", "Index", "Home", new { @class = "ajax-link" })</li>
+            <li>@Html.ActionLink("Weddings", "Weddings", "Home", new { @class = "ajax-link" })</li>
+            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+            <li>@Html.ActionLink("Log In", "Login", "Account")</li>*@
+            @*<li><a class="ajax-link" href="single.html">Home</a></li>
+                <li><a class="ajax-link" href="projects.html">Projects</a></li>*@
+            @*<li><a class="ajax-link" href="about-us.html">About us</a></li>
+            <li><a class="ajax-link" href="contact.html">Contact</a></li>*@
+        @*</ul>
+
+    </div>*@
+
+    <!--Header-->
+    <header id="fullscreen">
+        <div class="logo" id="full"><a class="ajax-link" href="index.html"></a></div>
+        <div class="menu-index" id="button">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
+    <div class="clear"></div>
+
+    <div class="section" >
         <section>
-            <div class="parallax-bg" data-stellar-background-ratio=".5"></div>
+            <div class="parallax-bg" data-stellar-background-ratio=".25">
+                <div data-stellar-background-ratio="2">
+                    <h1 id="mainHeader">Love KC Photography</h1>
+                </div>
+            </div>
+
         </section>
-        <section style="height:400px;">
-           
-                <h1 style="font-family:'madina_script-webfont'; color:black; text-align:center; position:relative">Love KC Photography</h1>
-          
-        </section>
+
+        <div class="row shadow">
+            <div class="col-sm-4 headerThreeColumn">
+                <h2 >Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus.</h2>
+                <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+            </div>
+            <div class="col-sm-4 headerThreeColumn">
+                <h2>Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus.</h2>
+                <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+            </div>
+            <div class="col-sm-4 headerThreeColumn">
+                <h2>Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus.</h2>
+                <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+            </div>
+        </div>
+
         <section data-stellar-background-ratio="6">
             <div class="parallax-bg" data-stellar-background-ratio=".5"></div>
         </section>
-        <div data-stellar-background-ratio=".5" style="font-family:'madina_script-webfont'; color:white">Hi Everyone</div>
+
     </div>
-   
+    <div class="row col-md-offset-1" id="ctaContainer">
+
+        <div class="col-sm-10 col-sm-offset-1">
+            <section class="row callToActionSection" id="callOutOne">
+                <div class="col-sm-6 transparent">
+                    <h1 style="font-family:'madina_script-webfont'">Wedding</h1>
+                    <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+                    <button class="btn btn-primary btn-lg">Book Today</button>
+
+                </div>
+            </section>
+
+            <section class="row callToActionSection" id="callOutTwo">
+                <div class="col-sm-6 col-sm-offset-7 transparent">
+                    <h1 style="font-family:'madina_script-webfont'">Wedding</h1>
+                    <p>Maecenas a ex vitae elit convallis venenatis. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit.</p>
+                    <button class="btn btn-primary btn-lg">Book Today</button>
+                </div>
+            </section>
+
+            <section class="row callToActionSection" id="callOutThree">
+                <div class="col-sm-6 transparent">
+                    <h1 style="font-family:'madina_script-webfont'">Wedding</h1>
+                    <p>Maecenas a ex vitae elit convallis venenatis. Sed vel lectus eu nulla porttitor consequat a ac ligula. Mauris purus elit, volutpat porttitor ex id, convallis facilisis tellus. Duis a nulla sodales, molestie erat pretium, condimentum massa. Sed consectetur vel erat et volutpat. Cras lobortis dolor ac luctus gravida. Nam sem magna, cursus vitae tortor vitae, convallis suscipit velit. Mauris nec est non leo sodales suscipit. Fusce rhoncus molestie sapien, non porta sem pulvinar sed. Duis id felis facilisis, tempus enim non, vulputate augue.</p>
+                    <button class="btn btn-primary btn-lg">Book Today</button>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+    
+    @*<script>
+        $('#button, #buttons').on('click', function () {
+            $(".opacity-nav").fadeToggle("slow", "linear");
+            // Animation complete.
+        });
+    </script>*@
+    <script>
+        $(document).ready(function () {
+            $.stellar();
+        });
+    </script>
+    </body>
+</html>
+
 
 

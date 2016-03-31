@@ -1,6 +1,9 @@
 ﻿@{
+    Layout = null;
     ViewBag.Title = "Home Page";
 }
+
+
 <!doctype html>
 
 <html lang="en">
@@ -12,11 +15,14 @@
     <meta name="keywords" content="simplicity, theme, html5, download">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author">
-    <link rel="icon" type="image/png" href="img/icon.png" />
+    <link rel="icon" type="image/png" href="~/Images/img/icon.png" />
 
     <!--Style-->
-
-
+    <link rel="stylesheet" href="~/Content/reset.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/style-responsive.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/stylesheet.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,106 +48,102 @@
         </div>
 
         <ul class="menu-fullscreen">
-            <li><a class="ajax-link" href="single.html">Home</a></li>
-            <li><a class="ajax-link" href="projects.html">Projects</a></li>
-            <li><a class="ajax-link" href="about-us.html">About us</a></li>
-            <li><a class="ajax-link" href="contact.html">Contact</a></li>
-        </ul>
-
-    </div>
-
-
-    <!--Header-->
-    <header id="fullscreen">
-
-        <div class="logo" id="full"><a class="ajax-link" href="index.html"></a></div>
-
-        <div class="menu-index" id="button">
-            <i class="fa fa-bars"></i>
-        </div>
-
-    </header>
-
-    <div class="clear"></div>
-
-    <!--Content-->
-
-    <div class="content" id="ajax-content">
-
-
-        <div class="text-intro" id="site-type">
-
-            <h1>My creative and simplicity modern</h1>
-            <h1 class="typewrite"><span>Portfolio</span></h1> <!--Change on script.js-->
-            <p>Please check my portfolio. All project is clean and simplicity modern style.</p>
+                <li>@Html.ActionLink("Home", "Index", "Home", new { @class="ajax-link"})</li>
+                <li>@Html.ActionLink("Weddings", "Weddings", "Home", new { @class="ajax-link"})</li>
+                <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                @*<li><a class="ajax-link" href="single.html">Home</a></li>
+                <li><a class="ajax-link" href="projects.html">Projects</a></li>*@
+                <li><a class="ajax-link" href="about-us.html">About us</a></li>
+                <li><a class="ajax-link" href="contact.html">Contact</a></li>
+            </ul>
 
         </div>
 
+        <!--Header-->
+        <header id="fullscreen">
+            <div class="logo" id="full"><a class="ajax-link" href="index.html"></a></div>
+            <div class="menu-index" id="button">
+                <i class="fa fa-bars"></i>
+            </div>
+        </header>
+        <div class="clear"></div>
+
+        <!--Content-->
+
+        <div class="content" id="ajax-content">
+
+            <div class="text-intro" id="site-type"  >
+
+                <h1 style="color: #87C0D2; font-family:'madina_script-webfont'; opacity: .6; width:62%; font-size:95px; text-transform:none" >Love KC Photography</h1>
+                @*<h1 class="typewrite"><span>Weddings</span></h1>*@ <!--Change on script.js-->
+            <p>Passion for beauty in Love.</p>
+
+</div>
 
         <!--Portfolio grid-->
 
         <ul class="portfolio-grid" id="portfolio-sidebar">
 
-
             <li class="grid-item">
-                <img src="img/portfolio/1.jpg">
+                <img src="~/Images/img/portfolio/063.jpg">
                 <a class="ajax-link" href="single.html">
                     <div class="grid-hover">
-                        <h1>Single</h1>
+                        <h1 style="font-family:'madina_script-webfont'; text-transform:none">Love</h1>
                         <p>Branding</p>
                     </div>
                 </a>
             </li>
 
             <li class="grid-item">
-                <img src="img/portfolio/5.jpg">
+                <img src="~/Images/img/portfolio/5.jpg">
                 <a class="ajax-link" href="single-fullscreen.html">
                     <div class="grid-hover">
-                        <h1>Full Screen</h1>
+                        <h1 style="font-family:'madina_script-webfont'; text-transform:none">Wedding</h1>
                         <p>Branding</p>
                     </div>
                 </a>
             </li>
 
             <li class="grid-item">
-                <img src="img/portfolio/2.jpg">
+                <img src="~/Images/img/portfolio/ForestWedding.jpg">
                 <a class="ajax-link" href="#">
                     <div class="grid-hover">
-                        <h1>Single</h1>
+                        <h1 style="font-family:'madina_script-webfont'; text-transform:none">Nature</h1>
                         <p>Branding</p>
                     </div>
                 </a>
             </li>
 
             <li class="grid-item">
-                <img src="img/portfolio/3.jpg">
+                <img src="~/Images/img/portfolio/details1.jpg">
                 <a class="ajax-link" href="#">
                     <div class="grid-hover">
-                        <h1>Single</h1>
+                        <h1 style="font-family:'madina_script-webfont'; text-transform:none">Details</h1>
                         <p>Branding</p>
                     </div>
                 </a>
             </li>
 
             <li class="grid-item">
-                <img src="img/portfolio/4.jpg">
-                <a class="ajax-link" href="#">
+                <img src="~/Images/img/portfolio/5369ee5b733d5da1f04133c3dd706cec.jpg">
+                <a class="ajax-link" href="http://localhost:12387/Home/Weddings">
                     <div class="grid-hover">
-                        <h1>Single</h1>
-                        <p>Branding</p>
+                        <h1 style="font-family:'madina_script-webfont'; text-transform:none">Weddings</h1>
+                        <p>Details</p>
                     </div>
                 </a>
             </li>
 
-            <li class="grid-item">
-                <img src="img/portfolio/6.jpg">
+            @*<li class="grid-item">
+                <img src="~/Images/img/portfolio/6.jpg">
                 <a class="ajax-link" href="#">
                     <div class="grid-hover">
-                        <h1>Single</h1>
+                        <h1 style="font-family:'madina_script-webfont'; text-transform:none">Single6</h1>
                         <p>Branding</p>
                     </div>
                 </a>
-            </li>
+            </li>*@
 
         </ul>
 
@@ -151,17 +153,17 @@
 
     <div id="ajax-sidebar">
 
-        <div class="home-sidebar" style="background-image:url('img/home-sidebar.jpg')" id="hero">
+        <div class="home-sidebar" style="background-image:url('../../Images/img/home-sidebar.jpg')" id="hero">
 
             <div class="parallax-option" data-jkit="[parallax:strength=0.8;axis=both]">
 
-                <div class="parallax parallax1"><img src="img/business-card-2.png"></div>
+                <div class="parallax parallax1"><img src="../../Images/img/business-card-2.png"></div>
 
             </div>
 
             <div class="parallax-option" data-jkit="[parallax:strength=0.3;axis=both]">
 
-                <div class="parallax parallax1"><img src="img/business-card.png"></div>
+                <div class="parallax parallax1"><img src="../../Images/img/business-card.png"></div>
 
             </div>
 
@@ -169,44 +171,32 @@
 
     </div>
 
-
     <!--Footer-->
-
     <footer>
-
         <div class="footer-margin">
-            
             <div class="copyright">© Copyright 2015. All Rights Reserved.</div>
-
-
+            <a href="https://www.facebook.com/lovekcphotography"><i class="fa fa-facebook"></i></a>
 
         </div>
-
-
     </footer>
-
-
 
     <!--Scripts-->
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/modernizr.custom.42534.js" type="text/javascript"></script>
-    <script src="js/jquery.waitforimages.js" type="text/javascript"></script>
-    <script src="js/typed.js" type="text/javascript"></script>
-    <script src="js/masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-    <script src="js/jquery.jkit.1.2.16.min.js"></script>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.easing.min.js"></script>
+    <script src="~/Scripts/js/modernizr.custom.42534.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/jquery.waitforimages.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/typed.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/jquery.jkit.1.2.16.min.js"></script>
 
-    <script src="js/script.js" type="text/javascript"></script>
-
+    <script src="~/Scripts/js/script.js" type="text/javascript"></script>
     <script>
     $('#button, #buttons').on('click', function() {
       $( ".opacity-nav" ).fadeToggle( "slow", "linear" );
     // Animation complete.
     });
     </script>
-
-
 </body>
 </html>

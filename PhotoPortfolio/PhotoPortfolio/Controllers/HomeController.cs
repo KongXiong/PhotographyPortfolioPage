@@ -12,7 +12,12 @@ namespace PhotoPortfolio.Controllers
         {
             return View();
         }
-        public ActionResult TestView()
+        public ActionResult Weddings()
+        {
+            return View();
+        }
+
+        public ActionResult Engagments()
         {
             return View();
         }
