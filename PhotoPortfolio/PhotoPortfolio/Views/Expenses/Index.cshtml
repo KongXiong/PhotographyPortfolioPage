@@ -5,133 +5,130 @@
 @Styles.Render("~/Content/css")
 
 @*<script src="@Url.Content("~/Scripts/jquery-2.2.0.js")"></script>
-<script src="@Url.Content("~/Scripts/jquery-validate.unobtrusive.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/jquery-validate.unobtrusive.js")"></script>*@
 
-<div>
-    <button class="btn btn-default" id="expense">Add New Expense</button>
-    <button class="btn btn-default" id="createBtn">Add A Category</button>
-    <button class="btn btn-default" id="quarterlybtn">See Quarterly</button>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
 
-    <div id="expenseDiv"></div>
 
-    <script>
-        $(document).ready(function () {
-            var expense = '@Url.Action("CreatePartial", "Expenses")';
-            var createExp = '@Url.Action("CreatePartial", "ExpenseCategories")';
-            var Quarterly = '@Url.Action("PartialQuarterly", "Expenses")';
-            var on = 0;
-            $("#expense").click(function () {
-                $('#expenseDiv').load(expense, { searchText: "" });
-            })
-            $("#createBtn").click(function () {
-                {
-                    $('#expenseDiv').load(createExp, { searchText: "" });
-                }
-            })
-            $("#quarterlybtn").click(function () {
-                {
-                    $('#expenseDiv').load(Quarterly, { searchText: "" });
-                }
-            })
-            $("#expCatbtn").click(function () {
-                {
-                    $('#expenseDiv').load(expCat, { searchText: "" });
-                }
-            })
-        });
-    </script>
+
+
+    </div>
 </div>
 
-<h2></h2>
+<div class="row" id="quarterlyRow">
+    <div class="col-sm-8 col-sm-offset-2">
 
-<canvas id="myChart" width="650" height="350"></canvas>
+        <h1>Quarterly Expenses</h1>
+    </div>
+    <div id="Quarterly" class="col-sm-8 col-sm-offset-2">
 
-<div class="panel">
-    <table class="col-lg-6" cellpadding="10">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpenseCategory.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Payee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th></th>
-        </tr>
+    </div>
+</div>
 
-        @foreach (var item in ViewBag.rows)
-        {
+<div class="row" id="graphRow">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h1>Daily Expenses</h1>
+        <canvas id="myChart" width="980px" height="auto"></canvas>
+    </div>
+</div>
+
+<div id="expenseDiv">
+    <div id="Div2"></div>
+</div>
+
+<div class="panel row">
+    <div class="col-sm-6 col-sm-offset-2">
+        <div>
+            <button class="btn btn-default" id="expense"><span class="glyphicon glyphicon-plus"></span> Add New Expense</button>
+            <button class="btn btn-default" id="createBtn"><span class="glyphicon glyphicon-plus"></span> Add A Category</button>
+        </div>
+        <h1>Expense</h1>
+        <table class="col-sm-12" cellpadding="10">
             <tr>
-                <td>
-                    @(item.ExpenseCategory.Name)
-                </td>
-                <td>
-                    @(item.Payee)
-                </td>
-                <td>
-                    @(item.Total)
-                </td>
-                <td>
-                    @(item.Date.ToShortDateString())
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpenseCategory.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
 
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Payee)
+            @foreach (var item in ViewBag.rows)
+            {
+                <tr>
+                    <td>
+                        @(item.ExpenseCategory.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Total)
+                        @(item.Payee)
                     </td>
+                    <td>
+                        @(item.Total)
+                    </td>
+                    <td>
+                        @(item.Date.ToShortDateString())
+                    </td>
+
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.Date.Day)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayName(item.Date.ToShortDateString())
-                    </td>*@
-            </tr>
-        }
-    </table>
-</div>
-<br />
+                            @Html.DisplayFor(modelItem => item.Payee)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Date.Day)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayName(item.Date.ToShortDateString())
+                        </td>*@
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
 
 
 
-@{
+    @{
 
-    double?[] result = ViewBag.totals;
-    string test = "";
+        double?[] result = ViewBag.totals;
+        string test = "";
 
-    for (int i = 0; i < result.Length; i++)
-    {
-        if (i == 0)
+        for (int i = 0; i < result.Length; i++)
         {
-            test = test + result[i].ToString();
+            if (i == 0)
+            {
+                test = test + result[i].ToString();
+            }
+            else
+            {
+                test = test + "," + result[i].ToString();
+            }
         }
-        else
+
+        var Dates = ViewBag.dates;
+        string dateString = "";
+        foreach (var item in Dates)
         {
-            test = test + "," + result[i].ToString();
+            if (dateString == "")
+            {
+                dateString = dateString + item.ToString("dd");
+            }
+            else
+            {
+                dateString = dateString + "," + item.ToString("dd");
+            }
         }
     }
-
-    var Dates = ViewBag.dates;
-    string dateString = "";
-    foreach (var item in Dates)
-    {
-        if (dateString == "")
-        {
-            dateString = dateString + item.ToString("dd");
-        }
-        else
-        {
-            dateString = dateString + "," + item.ToString("dd");
-        }
-    }
-}
-<script>
+    <script>
         var result = "@test";
         var resultsArray = result.split(',');
         var somthing = "@dateString";
@@ -178,4 +175,24 @@
             datasetFill: false,
         }
         var myLineChart = new Chart(context).Line(data, options)
-</script>
+
+        $(document).ready(function () {
+            var expense = '@Url.Action("CreatePartial", "Expenses")';
+            var createExp = '@Url.Action("CreatePartial", "ExpenseCategories")';
+            $("#expense").click(function () {
+                $('#expenseDiv').load(expense, { searchText: "" });
+            })
+            $("#createBtn").click(function () {
+                {
+                    $('#expenseDiv').load(createExp, { searchText: "" });
+                }
+            })
+        });
+
+        $(document).ready(function () {
+            var revCat = '@Url.Action("PartialQuarterly", "Expenses")';
+            $('#Quarterly').load(revCat);
+
+        });
+
+    </script>
